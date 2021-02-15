@@ -20,7 +20,9 @@ $('#login-submit').click(function(e){
     var email = document.getElementById("login-form").Email.value;
     var password = document.getElementById("login-form").Password.value;
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST","https://snt1207o90.execute-api.us-east-1.amazonaws.com/development/login", false);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send({"email":email,"password":password});   
+    xhttp.open("POST","http://localhost:3000/login", false);
+    xhttp.setRequestHeader("Content-type","application/json");
+    console.log(JSON.stringify({"email":email,"password":password}));
+    xhttp.send(JSON.stringify({"email":email,"password":password}));   
+    console.log(xhttp.responseText);
 })
