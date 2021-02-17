@@ -4,6 +4,7 @@ const axios = require('axios');
 var session = require('express-session');
 const typingDNA = require('typingdnaclient');
 const typingDnaClient = new typingDNA('cc232a43f92f13ac0a736b97a7ed1d86','f777e09c7c4d1976aed3bd9e805f37a6');
+const PORT = process.env.PORT || 3000;
 
 app.use(session({secret:'Devpost Hackathon', resave:true, saveUninitialized:false, cookie:{}}));
 app.use(express.json());
@@ -109,6 +110,6 @@ app.post('/login', (req,res)=>{
         console.log(error);
       })
 });
-app.listen(3000, function(){
+app.listen(PORT, function(){
     console.log("Server Listening at 3000\n");
 })
