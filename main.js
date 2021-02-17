@@ -46,13 +46,13 @@ app.post('/signup',(req,res)=>{
 })
 function verifyAPI(userid, tp, callback){
   console.log(userid);
-  typingDnaClient.auto(userid,tp,callback);
+  typingDnaClient.verify(userid,tp,2,callback);
 }
 function enrollAPI(userid, tp,callback){
     if(typeof(tp) === "object"){  
       tp.forEach(function(typingPattern, index){
         setTimeout(() => {
-          typingDnaClient.auto(userid, typingPattern, callback);
+          typingDnaClient.save(userid, typingPattern, callback);
         },index * 1500);
     });
   }else{
