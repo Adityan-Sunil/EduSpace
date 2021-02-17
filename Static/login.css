@@ -1,25 +1,47 @@
+body{
+    margin:0;
+    background: rgb(253, 250, 239);
+}
 .signin-area{
     height:40%;
     width:25%;
-    margin: 10% 35%;
-    border:1px solid black;
+    margin: 5% 37%;
+    border:1px solid rgb(255, 249, 236);
+    background: white;
+    box-shadow: 0px 0px 10px 5px rgb(255, 244, 215);
 }
 .title{
     margin: 5%;
     text-align: center;
     width:90%;
+    font-size:2em;
 }
 .forms{
     margin:5%;
     width:90%;
 }
 input{
-    width:100%;
+    width:90%;
+    padding:0% 5%;
     height:5vh;
+    border:1px solid  rgb(216, 206, 180);
+    color: rgb(189, 179, 152);
+}
+input::placeholder{
+    color: rgb(189, 179, 152);
+}
+input[type="button"]{
     padding:0%;
+    width:100%;
+    color:white;
+    background:orange;
+    border:1px solid gray;
+    border-radius: 2%;
 }
 table{
     width:100%;
+    border-collapse: separate;
+    border-spacing: 0 2em;
 }
 #login{
     display: none;
@@ -27,4 +49,47 @@ table{
 .switch-btn{
     border:0px;
     background: none;
+}
+.topbar{
+    height:7vh;
+    margin-bottom:2vh;
+    width:100%;
+    background: white;
+}
+.topbar-title{
+    margin:0% 20%;
+    height:100%;
+    width:50%;
+    line-height: 7vh;
+    font-size: 2em;
+}
+.code-div{
+    background: rgb(247, 237, 212);
+    padding:1% 5%;
+    width:90%;
+    display: inline-flex;
+    height:7vh;
+    margin-bottom:5%;
+}
+textarea{
+    margin:5% 0%;
+    width:100%;
+    border:1px solid rgb(216, 206, 180);
+}
+.bar-chart{
+    margin-top:5%;
+    background: orange;
+    height:2vh;
+    border:1px solid rgb(247, 237, 212);
+    width:100%;
+    margin-left:60%;
+    transition: width 50ms ease-in;
+}
+#code-submit{
+    width:100%;
+    background: orange;
+    color:white;
+}
+#code-submit img{
+    height:100%;
 }
