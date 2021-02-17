@@ -77,13 +77,6 @@ for (let i = 0; i < btn_switch.length; i++) {
         }
     });
 }
-function checkCookie(){
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("POST","http://localhost:3000/getCookie", false);
-    xhttp.setRequestHeader("Content-type","application/json");
-    xhttp.send(JSON.stringify({"password":"password"}));   
-}
-
 $('#login-submit').click(function(e){
     e.preventDefault();
     console.log("Submitted");
@@ -106,14 +99,14 @@ $('#login-submit').click(function(e){
             },"verify");
         }
     }
-    xhttp.open("POST","http://localhost:3000/login", false);
+    xhttp.open("POST","/login", false);
     xhttp.setRequestHeader("Content-type","application/json");
     console.log(JSON.stringify({"email":email,"password":password}));
     xhttp.send(JSON.stringify({"email":email,"password":password}));   
 })
 function ajaxCall(params, callback, url){
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST","http://localhost:3000/"+url, false);
+    xhttp.open("POST","/"+url, false);
     xhttp.onreadystatechange = function(){
         if(this.readyState == 4 || this.status == 200){
             callback(this.responseText);
