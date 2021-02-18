@@ -49,7 +49,7 @@
             var code = editor.getValue();
             var but = document.getElementById("run");
             var tdna  = new TypingDNA();
-            $("#editor").firstElementChild.setAttribute('id', 'code-editor')
+            $("#editor").children()[0].setAttribute('id', 'code-editor')
             tdna.addTarget("code-editor");
             var typingPattern = tdna.getTypingPattern({type:0, length:100, targetId: 'code-editor'});
             function runFunction(){
