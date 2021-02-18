@@ -68,6 +68,13 @@ app.post('/verify', (req,res)=>{
   res.send({"result":result.netScore});}
   })
 })
+app.post("/loginCheck",(req,res)=>{
+  if(req.session.ID == null){
+    res.send(false);
+  }else{
+    res.send(true);
+  }
+})
 app.post('/enroll', (req,res)=>{
   userId = req.session.ID;
   console.log(req.session.ID);
@@ -78,7 +85,11 @@ app.post('/enroll', (req,res)=>{
     else{res.send(result.netScore);}
   })
 })
-
+app.get('/logout',(req,res)=>{
+  // req.session.ID = null;
+  // res.redirect("/login.html");
+  console.log(req);
+})
 app.post('/login', (req,res)=>{
   console.log("Got POST");
   console.log(req.body);

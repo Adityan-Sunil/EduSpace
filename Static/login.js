@@ -75,7 +75,7 @@ $("#code-submit").click(function(){
     }
     ajaxCall(params,function(error){
         console.log(error);
-        window.location.assign('/editor.html');
+        window.location.assign('/coding-test.html');
     }, "enroll")
 })
 
@@ -122,7 +122,7 @@ $('#login-submit').click(function(e){
                     alert("Typing Pattern mismatch");
                     location.reload();
                 }else{
-                    location.assign('/editor.html');
+                    location.assign('/coding-test.html');
                 }
             },"verify");
         }
