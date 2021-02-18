@@ -51,7 +51,6 @@
             var tdna  = new TypingDNA();
             $("#editor").children()[0].setAttribute('id', 'code-editor')
             tdna.addTarget("code-editor");
-            var typingPattern = tdna.getTypingPattern({type:0, length:100, targetId: 'code-editor'});
             function runFunction(){
                 var inp = document.getElementById('inp').value;
                 var xhr = new XMLHttpRequest();
@@ -68,7 +67,7 @@
             var data = JSON.stringify({code: editor.getValue(), input:inp});
             console.log(JSON.stringify({code: editor.getValue(), input:inp}));
             xhr.send(data);
-            
+            var typingPattern = tdna.getTypingPattern({type:0, length:$("#code-editor").val().length, targetId: 'code-editor'});
             var data2 = {
                 action : "code-exec",  
                 tp : typingPattern,
