@@ -10,6 +10,8 @@
     <body onload="checkLogin()">
         <div class="topbar">
             <div class="topbar-title">Edutor</div>
+            <div class="nav-btns"><button class="nav-btn" id="change-test">Code Test</button>
+            <button class="nav-btn" id="logout">Logout</button></div>
         </div>
         <div class="container">
             <div class="question">
@@ -85,6 +87,9 @@
             };
             xhr2.send(JSON.stringify(data2));
             }
+            $("change-test").click(function(){
+            window.location.assign("/written-test.html");
+        })
         </script>
     </body>
 </html>

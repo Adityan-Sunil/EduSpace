@@ -75,7 +75,7 @@ $("#code-submit").click(function(){
     }
     ajaxCall(params,function(error){
         console.log(error);
-        window.location.assign('/coding-test.html');
+        window.location.assign('/written-test.html');
     }, "enroll")
 })
 
