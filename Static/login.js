@@ -22,7 +22,7 @@ $("#typing-test-switch").click(function(){
     ajaxCall(params,function(error){
         console.log(error);
         $("#code-div").html("A dog is one of the helpful animals that consist of a fluffy hairy body. Dogs help in protecting a house from thieves and fraud people during the night.")
-    }, '/enroll')
+    }, 'enroll')
     $("#typing-test-switch").hide();
     $("#code-submit").show();
 })
