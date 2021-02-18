@@ -6,7 +6,7 @@ function checkLogin(){
     var resp = xhttp.responseText;
     console.log(resp === "false");
     if(resp === "false"){
-        window.location.assign("/login.html");
+        window.location.assign("/index.html");
     }
 }
 $("#logout").click(function(){
