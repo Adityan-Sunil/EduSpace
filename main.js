@@ -70,7 +70,6 @@ app.post('/verify', (req,res)=>{
 })
 app.post('/enroll', (req,res)=>{
   userId = req.session.ID;
-  console.log(req.body);
   console.log(req.session.ID);
   typingPattern = req.body.tp;
   console.log(typingPattern);
