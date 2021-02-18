@@ -43,7 +43,7 @@ app.post('/signup',(req,res)=>{
 
 function verifyAPI(userid, tp, callback){
   console.log(userid);
-  typingDnaClient.verify(userid,tp,2,callback);
+  typingDnaClient.verify(userid,tp,1,callback);
 }
 
 function enrollAPI(userid, tp,callback){
