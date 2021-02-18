@@ -13,13 +13,10 @@ app.use(express.urlencoded({
   extended:true
 }))
 
-
 app.post('/signup',(req,res)=>{
   console.log("Got Request");
   //console.log(req.body.tp);
     axios.interceptors.request.use(config => {
-    console.log('Request was sent');
-    //console.log(config);
     return config;
   }, error => {
     return Promise.reject(error);
@@ -42,12 +39,13 @@ app.post('/signup',(req,res)=>{
     },(error)=>{
     console.log(error);
   })
-
 })
+
 function verifyAPI(userid, tp, callback){
   console.log(userid);
   typingDnaClient.verify(userid,tp,2,callback);
 }
+
 function enrollAPI(userid, tp,callback){
     if(typeof(tp) === "object"){  
       tp.forEach(function(typingPattern, index){
@@ -60,13 +58,14 @@ function enrollAPI(userid, tp,callback){
     typingDnaClient.auto(userid, tp,callback);
   }
 }
+
 app.post('/verify', (req,res)=>{
   var tp = req.body.tp;
   var id = req.session.ID;
   verifyAPI(id, tp, function(err, result){
     if(err){"Error: ",console.log(err);}
-    else{"Result: ",console.log(result);
-  res.send("check");}
+    else{"Result: ",console.log(result.netScore);
+  res.send({"result":result.netScore});}
   })
 })
 app.post('/enroll', (req,res)=>{
@@ -77,39 +76,38 @@ app.post('/enroll', (req,res)=>{
   console.log(typingPattern);
   enrollAPI(req.session.ID, req.body.tp,function(error,result){
     if(error){console.log(error);}
-    else{console.log(result);
-      res.send("check");
-    }
+    else{res.send(result.netScore);}
   })
 })
+
 app.post('/login', (req,res)=>{
-    console.log("Got POST");
-    console.log(req.body);
-    var details = (req.body);
-    var resp;
-    axios.interceptors.request.use(config => {
-        console.log('Request was sent'); 
-        return config;
-      }, error => {
-        return Promise.reject(error);
-      });
-      axios.post('https://snt1207o90.execute-api.us-east-1.amazonaws.com/development/login',{
-            email: details.email,
-            password: details.password
-      },{
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    }).then((response)=>{
-        resp = response.data;
-        req.session.ID = response.data;
-        console.log("Login: ",req.session);
-        req.session.save();
-        res.send(response.data);
-      },(error)=>{
-        console.log(error);
-      })
+  console.log("Got POST");
+  console.log(req.body);
+  var details = (req.body);
+  var resp;
+  axios.interceptors.request.use(config => {
+      console.log('Request was sent'); 
+      return config;
+    }, error => {
+      return Promise.reject(error);
+    });
+    axios.post('https://snt1207o90.execute-api.us-east-1.amazonaws.com/development/login',{
+          email: details.email,
+          password: details.password
+    },{
+      headers: {
+          'Content-Type': 'application/json',
+      }
+  }).then((response)=>{
+      resp = response.data;
+      req.session.ID = response.data;
+      console.log("Login: ",req.session);
+      req.session.save();
+      res.send(response.data);
+    },(error)=>{
+      console.log(error);
+    })
 });
 app.listen(PORT, function(){
-    console.log("Server Listening at 3000\n");
+    console.log("Server Listening\n");
 })

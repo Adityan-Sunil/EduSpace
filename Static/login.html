@@ -7,14 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Name:Login</title>
     <script src="typingdna.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
     <div class="topbar">
-        <div class="topbar-title">EduSpace</div>
+        <div class="topbar-title">Edutor</div>
     </div>
     <div class="signin-area">
-        <div class="title">EduSpace</div>
+        <div class="title">Edutor</div>
         <div class="signup forms" id="signup">
                     <table id="user-dets">
                         <tr><td><input type="text" name="Fname" id="test-name" placeholder="Enter Full Name"></td></tr>
@@ -24,11 +26,12 @@
                         <tr><td>Already Have an Account? <button class="switch-btn">Login</button> here</td></tr>
                     </table>
                     <div id="typing-test">
-                        <div class="code-div"><code id="test-code">int i = 3; <br> int j =5; <br> print(i+j);</code><div id="wpm" class="bar-chart"></div></div><br>
-                        <label for="typing-test">Type the code given above here</label><br>
+                        <div id="code-div">In today’s world, cybersecurity is very important because of some security threats and cyber-attacks.</div><br>
+                        <label for="typing-test">Type the text given above here</label><br>
                         <textarea name="typing-test" id="typedna-test" cols="30" rows="10"></textarea>
+                        <button class="btn-submit" id="typing-test-switch">Next</button>
                         <!-- <input type="button" id="code-submit" value="Done"/> -->
-                        <button id="code-submit"><img src="Static\spinner.gif" alt=""></button>
+                        <button class="btn-submit" id="code-submit">Done</button>
                     </div>
         </div>
         <div class="login forms" id="login">
@@ -36,7 +39,7 @@
                     <table>
                         <tr><td colspan="2"><input type="text" name="Email" id="email" placeholder="Enter Email"></td></tr>
                         <tr><td colspan="2"><input type="password" name="Password" id="pwd" placeholder="Enter Password"></td></tr>
-                        <tr><td colspan="2"><input id="login-submit" type="button" value="Submit"></td></tr>
+                        <tr><td colspan="2"><button class="btn-submit" id="login-submit">Login</button></td></tr>
                         <tr><td><button class="switch-btn">Forgot Password?</button></td>
                             <td><button class="switch-btn">Sign Up</button></td>
                         </tr>

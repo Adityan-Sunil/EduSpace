@@ -11,6 +11,21 @@ tdna.addTarget('pwd');
 
 var startTime;
 $("#typing-test").hide();
+$("#code-submit").hide();
+$("#typing-test-switch").click(function(){
+    console.log("clicked");
+    var test1 = tdna.getTypingPattern({type:1, length:102,targetId:'typedna-test',text:$("#code-div").text()});
+    var params = {
+        tp:test1,
+        action:"enroll"
+    }
+    $("#code-div").html("A dog is one of the helpful animals that consist of a fluffy hairy body. Dogs help in protecting a house from thieves and fraud people during the night.")
+    ajaxCall(params,function(error){
+        console.log(error);
+    }, '/enroll')
+    $("#typing-test-switch").hide();
+    $("#code-submit").show();
+})
 $("#test-switch").click(function(){
     tdna.stop();
     var length = $("#test-email").val().length + $("#test-password").val().length + $("#test-name").val().length;
@@ -46,18 +61,21 @@ $("#typedna-test").focus(function(){
 })
 $("#code-submit").click(function(){
     tdna.stop();
+    $("#code-submit").html('<img src="spinner.gif" alt="" style="height: 95% , z-index:5">');
+    $("#code-submit").prop('disabled','true');
     console.log($("#typedna-test").val());
     var params = {
         action:"enroll",
         tp:tdna.getTypingPattern({
             type:1,
             length:$("#typedna-test").val().length, 
-            text:$("#test-code").text(), 
+            text:$("#code-div").text(), 
             targetId:'typedna-test'
         })
     }
     ajaxCall(params,function(error){
-        console.log(error)
+        console.log(error);
+        window.location.assign('/editor.html');
     }, "enroll")
 })
 
@@ -80,22 +98,32 @@ for (let i = 0; i < btn_switch.length; i++) {
 $('#login-submit').click(function(e){
     e.preventDefault();
     console.log("Submitted");
-    
+    $("#login-submit").html('<img src="spinner.gif" alt="" style="height: 95% , z-index:5">');
+    $("#login-submit").prop('disabled','true');
     tdna.stop();
     var email = document.getElementById("login-form").Email.value;
     var password = document.getElementById("login-form").Password.value;
     var xhttp = new XMLHttpRequest();
-    var tpMail = tdna.getTypingPattern({type:0, length: $("#email").val().length+10}, targetId = 'email');
+    var tpMail = tdna.getTypingPattern({type:0, length: $("#email").val().length, targetId: 'email'});
     var params = {
         tp:tpMail,
         action:"enroll"
     }
     xhttp.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
-            console.log("Got ID from server");
-            userID = this.responseText;
-            ajaxCall(params,function(error){
-                console.log(error);
+            if(this.responseText === "invalid"){
+                alert("Incorrect Password");
+            }else{
+                userID = this.responseText;
+            }
+            ajaxCall(params,function(result){
+                result = JSON.parse(result);
+                if(result.result < 30){
+                    alert("Typing Pattern mismatch");
+                    location.reload();
+                }else{
+                    location.assign('/editor.html');
+                }
             },"verify");
         }
     }

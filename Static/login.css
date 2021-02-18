@@ -1,6 +1,7 @@
 body{
     margin:0;
-    background: rgb(253, 250, 239);
+    background: rgb(255, 254, 240);
+    font-family: 'Ubuntu Mono', monospace;0
 }
 .signin-area{
     height:40%;
@@ -54,7 +55,7 @@ table{
     height:7vh;
     margin-bottom:2vh;
     width:100%;
-    background: white;
+    background: orange;
 }
 .topbar-title{
     margin:0% 20%;
@@ -63,12 +64,11 @@ table{
     line-height: 7vh;
     font-size: 2em;
 }
-.code-div{
+#code-div{
     background: rgb(247, 237, 212);
     padding:1% 5%;
     width:90%;
     display: inline-flex;
-    height:7vh;
     margin-bottom:5%;
 }
 textarea{
@@ -85,11 +85,17 @@ textarea{
     margin-left:60%;
     transition: width 50ms ease-in;
 }
-#code-submit{
+.btn-submit{
     width:100%;
     background: orange;
     color:white;
+    height:5vh;
+    z-index: 0;
+    border:1px solid black;
+    overflow: none;
+
 }
-#code-submit img{
+.btn-submit img{
     height:100%;
+    z-index:5;
 }

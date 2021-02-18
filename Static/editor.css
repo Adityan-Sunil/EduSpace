@@ -1,0 +1,114 @@
+body{
+    margin:0%;
+    background:rgb(255, 254, 240);
+}
+.topbar{
+    background: orange;
+    color:white;
+}
+textarea{
+    /* background: rgb(255, 208, 119); */
+    background: white;
+    padding:2.5%;
+    border:0px;
+    color: black;
+    width: 85%;
+    margin-left:5%;
+    box-shadow: 0px 0px 10px 10px rgb(255, 230, 176);
+    font-size: 1.2em;
+}
+textarea:focus{
+    outline:0px;
+}
+textarea::placeholder{
+    font-size: 1.1em;
+}
+.topbar-title{
+    margin:0% 2.5%;
+}
+#editor { 
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.editor-div{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    height:90%;
+    box-shadow: 0px 0px 10px 10px rgb(255, 230, 176);
+}
+.container{
+    margin:0% 2.5%;
+    display:grid;
+    column-gap: 1%;
+    height:90vh;
+    padding-bottom:0.2%;
+    grid-template-columns: 40% 60%;
+}
+.bottom-bar{
+    position:fixed;
+    bottom:2vh;
+    width:96%;
+    height:5vh;
+}
+.buttons{
+    height:100%;
+    margin-left:80%;
+    width:20%;
+}
+.btn-exec{
+    height:100%;
+    color:white;
+    width:45%;
+    margin-left:2.5%;
+    background: #372554;
+    transition: transform  ease-in 0.3s;
+}
+.question-title{
+    height:7.8vh;
+    border: 1px solid black;
+    width:90%;
+    background-color: white;
+    text-align: center;
+    line-height: 7vh;
+    margin-bottom:4vh;
+    margin-left:5%;
+    border:0px;
+    box-shadow: 0px 0px 10px 10px rgb(255, 230, 176);
+}
+.examples{
+    height:47.5vh;
+    width:90%;
+    margin:1.5% 5%;
+    background: white;
+    box-shadow: 0px 0px 10px 10px rgb(255, 230, 176);
+    
+}
+.btn-exec:hover{
+    transform: scale(1.1);
+}
+.ace_gutter-cell,.ace_gutter, .ace_gutter-active-line{
+    background:rgb(160, 160, 160) !important;
+}
+.ace-tm, .ace_gutter-cell,.ace_gutter, .ace_gutter-active-line{
+    color:black !important;
+}
+.output-code{
+    background:white;
+    border-left:1px solid rgb(216, 204, 171);
+    height:100%;
+    text-align:center;
+}
+.output-title{
+    background-color: rgb(160, 160, 160);
+    font-size:1.2em;
+}
+#output-content{
+    margin-top:2%;
+    margin-left:2%;
+    text-align: left;
+}
